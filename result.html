@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
+  <link rel="stylesheet" href="{{url_for('static', filename='design.css')}}">
+  <title>Result-SCDP</title>
+</head>
+
+<body>
+  <div id="google_translate_element" style="display:none;"></div>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {pagelanguage : 'en'},
+        'google_translate_element'
+      );
+    }
+  </script>
+  <!-- ////////////////////////////////////
+          START OF Nav
+  ///////////////////////////////////// -->
+  <section class=" hero-background" id="home">
+      <nav class="container  d-flex flex-wrap justify-content-center py-3 mb-4 ">
+        <a href="" class=" align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <span class="fs-4">Hridyasta</span>
+        </a>
+
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="#home" class="nav-link custom-color active" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="#Agenda" class="nav-link custom-color">Features</a></li>
+          <li class="nav-item"><a href="#aboutUS" class="nav-link custom-color">About us</a></li>
+          <li class="nav-item"><a href="#quickFacts" class="nav-link custom-color">Quick Facts</a></li>
+          <li class="nav-item"><button id = "translate" class="nav-link custom-color">Translate</button></li>
+        </ul>
+      </nav>
+
+    <!-- ///////////////////////////////////
+              END OF Nav
+    /////////////////////////////////////// -->
+
+    <div class = "container" style="height:30px;"></div>
+
+    <!-- //////////////////////////
+          START OF hero
+    /////////////////////////// -->
+    <div class="container ">
+      <div class="px-4 py-4 my-5 text-center">
+        <img class="d-block mx-auto mb-3 ourHeroLogo" src="{{url_for('static', filename='Images/heart(logo).png')}}" alt="ourHeroLogo" width="72" height="53">
+        <h1 class="display-5 fw-bold text-body-emphasis text">Smart Cardiac disease predictor</h1>
+    
+            <!-- <br> <br>Answer the following questions.</p> -->
+          
+        </div>
+      </div>
+    </div>
+  <!-- </section> -->
+
+  <!-- //////////////////////////
+        END OF hero
+  /////////////////////////// -->
+
+    {% if predict[0] == 0 %}
+    <div class="container my-5 action">
+      <div class="p-5 text-center  rounded-3 action">
+        <!-- <svg class="bi mt-4 mb-3" style="color: var(--bs-indigo);" width="100" height="100"><use xlink:href="#bootstrap"></use></svg> -->
+        <h4 class="text-body-emphasis" style="color:'green';">Hey {{result}}, Congratulations</h4>
+        <p class="col-lg-8 mx-auto fs-5 text-muted">
+          we can safely assume that you are safe. But still if you want to go for further question feel free to consult a doctor and fill this form.
+        </p>
+      </div>
+    </div>
+    {% else %}
+    <div class="container my-5 action">
+      <div class="p-5 text-center  rounded-3 action">
+        <h4 class="text-body-emphasis">Hey {{result}}, Sorry to say</h4>
+        <p class="col-lg-8 mx-auto fs-5 text-muted">
+          Based on your current lifestyle and medical history, there is a possibility that you may be at risk of developing heart disease. It's important to take this seriously and take steps to manage any risk factors you may have, such as maintaining a healthy diet, staying physically active, quitting smoking if you are a smoker, and seeking regular medical care. By taking proactive measures, you can lower your risk and protect your health
+        </p>
+  
+      </div>
+    </div>
+
+    {% endif %}
+
+
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a href="#gForm"><button type="button" id="checkBtn" class="btn btn-primary btn-lg px-4 gap-3 callAction">Go for Further Prediction 
+        <img src="{{url_for('static', filename='Images/chevron-right.svg')}}" alt="chevron-right">
+      </button></a>
+    </div>
+
+    <div class = "container" style="height:50px;"></div>
+
+      <!-- //////////////////////////
+          START OF Form
+  ////////////////////////// -->
+
+  <div class="container" id="gForm" style="display:none;">
+    <iframe id="sframe" src="https://docs.google.com/forms/d/e/1FAIpQLSdp4d_a_Nl_uF-vABBqLoDsdCMmYKB6yphICncszjQtxlZmQA/viewform?embedded=true" class="container" width="640" height="3306" frameborder="0" marginheight="0" marginwidth="0" onload="add();">Loading…</iframe>
+  </div>
+
+
+  <!-- //////////////////////////
+          END OF Form
+  ////////////////////////// -->
+
+    
+  <!-- ////////////////////////////////////////////
+    START OF Why Choose Us?
+  //////////////////////////////////////////// -->
+  <section class="chooseUs">
+  <div class="container px-4 py-5 chooseUs2" id="Agenda">
+    <h2 class="pb-2 border-bottom">Why choose Us?</h2>
+    <div class="row div-gap g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+          <img src="{{url_for('static', filename='Images/target-svg.png')}}" alt="briefcase" height="30">
+        </div>
+        <h3 class="fs-2">Accuracy</h3>
+        <!-- We have a huge data set, So we have accuracy -->
+        <p>
+          We are going to provide you with an 85% accuracy of prediction.Our model is based on a dataset of 4 lakh+ patients and trusted hospitals. This high level of accuracy means that our model can be used with confidence to predict heart disease and identify patients who may need further testing or intervention.
+        </p>
+      </div>
+
+
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+          <img src="{{url_for('static', filename='Images/public-service.png')}}" alt="bus-front" height="30">
+        </div>
+        <h3 class="fs-2">Why we do it?</h3>
+        <p>
+          <!-- Say how good people we are, how much we care about people -->
+          Heart disease is a leading cause of death worldwide, and early detection and prevention are critical to reducing its impact. However, current methods for heart disease prediction may not be accurate enough or may be time-consuming and costly. That's why we developed our smart heart disease prediction project using machine learning.
+        </p>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+         <img src="{{url_for('static', filename='Images/PersonalizedForU.png')}}" alt="chat-square-heart" height="30">
+        </div>
+        <h3 class="fs-2">Personalized For You</h3>
+        <!-- Who is it gonna help -->
+        <p>At our core, we believe that moving should be an exciting and positive experience, not a stressful one. By providing exceptional moving services in the US, we hope to revolutionize the way people think about moving and provide a better, more personalized experience for our customers. Contact us today to learn more about how we can help you with your next move.</p>
+      </div>
+    </div>
+  </div>
+  </section>
+
+</section>
+
+  <!-- ////////////////////////////////////////////
+    END OF Why Choose Us?
+  //////////////////////////////////////////// -->
+
+
+  
+
+
+
+  <!-- ///////////////////////////////////////////////////
+        START OF Health Info
+  /////////////////////////////////////////////////// -->
+  <div class="container" id="quickFacts">
+    <div class="container-fluid py-5">
+      <h2 class="pb-2 border-bottom">Heart facts</h2>
+        <!-- Some Heart Medical Facts -->
+        <div class=" flex-column flex-md-row gap-4 py-md-5 align-items-center justify-content-center">
+          <div class="list-group">
+              <div class="d-flex gap-2 w-100 list-group-item justify-content-between">
+                <div>
+                  <h6 class="mb-2">Leading cause</h6>
+                  <p class="mb-3">Heart disease is the leading cause of death worldwide, responsible for more than 17 million deaths each year.</p>
+                </div>
+              </div>
+              <div class="d-flex gap-2 list-group-item w-100 justify-content-between">
+                <div>
+                  <h6 class="mb-2">Risks</h6>
+                  <p class="mb-3">High blood pressure, smoking, high cholesterol, obesity, diabetes, and a sedentary lifestyle are all major risk factors for heart disease.</p>
+                </div>
+              </div>
+              <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+                <div>
+                  <h6 class="mb-2">Third heading</h6>
+                  <p class="mb-3">Heart disease can affect people of all ages, including children. Congenital heart defects are the most common birth defect, affecting around 1 in 100 newborns.</p>
+                </div>
+              </div>
+              <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+                <div>
+                  <h6 class="mb-2">Men and Women</h6>
+                  <p class="mb-3">Heart disease is more common in men than women, but it is still a significant health concern for women.
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+                <div>
+                  <h6 class="mb-2">Gender Disparities in Heart Disease</h6>
+                  <p class="mb-3">Heart disease is more common in men than women, but it is still a significant health concern for women.
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+                <div>
+                  <h6 class="mb-2"> Medical Conditions and Increased Heart Disease Risk</h6>
+                  <p class="mb-3">Certain medical conditions, such as lupus, rheumatoid arthritis, and HIV/AIDS, can increase the risk of developing heart disease.
+          
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+                <div>
+                  <h6 class="mb-2"> Cardiovascular Disease and Associated Health Risks</h6>
+                  <p class="mb-3">Cardiovascular disease can increase the risk of developing other health problems, including stroke, kidney disease, and vascular dementia.</p>
+                </div>
+              </div>
+              <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+                <div>
+                  <h6 class="mb-2"> Heart Disease Across All Ages: Congenital Defects in Newborns</h6>
+                  <p class="mb-3">Heart disease can affect people of all ages, including children. Congenital heart defects are the most common birth defect, affecting around 1 in 100 newborns.</p>
+                </div>
+              </div>
+              <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+                <div>
+                  <h6 class="mb-2">Major Risk Factors for Heart Disease</h6>
+                  <p class="mb-3">High blood pressure, smoking, high cholesterol, obesity, diabetes, and a sedentary lifestyle are all major risk factors for heart disease. </p>
+                </div>
+              </div>
+                <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+                <div>
+                  <h6 class="mb-2">Innovative Approaches to Treating Heart Disease</h6>
+                  <p class="mb-3">Research is ongoing to develop new treatments for heart disease, including stem cell therapy and gene therapy. </p>
+                </div>
+                </div>
+  
+  
+          </div>
+        </div>
+    </div>
+  </div>
+  </section>
+
+
+  <!-- ////////////////////////////////////////
+        END OF Health Info
+  /////////////////////////////////////// -->
+
+   <!-- /////////////////////////////////////////
+        START OF Refrences
+  ////////////////////////////////////////// -->
+  <div class="container" id="quickFacts">
+    <div class="container-fluid py-5">
+      <h2 class="pb-2 border-bottom">Refrences</h2>
+      <!-- Some Heart Medical Facts -->
+      <div class=" flex-column flex-md-row gap-4 py-md-5 align-items-center justify-content-center">
+        <div class="list-group">
+            <div class="d-flex gap-2 w-100 list-group-item justify-content-between">
+              <div>
+                <h6 class="mb-2"><a href="https://ieeexplore.ieee.org/document/8815772" target="_blank">Early Prediction of Heart Problems Through Predictive Analysis of ECG Signals</h6></a>
+              </div>
+            </div>
+            <div class="d-flex gap-2 list-group-item w-100 justify-content-between">
+              <div>
+                <h6 class="mb-2"><a href="https://www.hindawi.com/journals/cin/2022/1070697/" target="_blank">Exploration of Human Cognition using Artificial Intelligence in Healthcare</h6></a>
+              </div>
+            </div>
+            <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+              <div>
+                <h6 class="mb-2"><a href="https://www.mdpi.com/2079-9292/11/15/2292" target="_blank">IoT-Cloud-Based Smart Healthcare Monitoring System for Heart Disease Prediction via Deep Learning</h6></a>
+              </div>
+            </div>
+            <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+              <div>
+                <h6 class="mb-2"><a href="https://www.academia.edu/42249626/Mini_Project_Report_On_Heart_Disease_Prediction_" target="_blank">Mini-Project Report On "Heart Disease Prediction
+                </h6></a>
+              </div>
+            </div>
+            <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+              <div>
+                <h6 class="mb-2"><a href="https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/s12911-021-01527-5" target="_blank">BMC Medical Informatics and Decision Making
+                </h6></a>
+              </div>
+            </div>
+            <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+              <div>
+                <h6 class="mb-2"><a href="https://www.mdpi.com/1999-4893/16/2/88" target="_blank">Effective Heart Disease Prediction Using Machine Learning Techniques
+                </h6></a>
+              </div>
+            </div>
+            <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+              <div>
+                <h6 class="mb-2"><a href="https://www.researchgate.net/publication/349140147_Heart_Disease_Prediction" target="_blank">Heart Disease Prediction - Research gate.
+                </h6></a>
+              </div>
+            </div>
+            <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+              <div>
+                <h6 class="mb-2"><a href="https://iopscience.iop.org/article/10.1088/1757-899X/1022/1/012072" target="_blank">Heart Disease Prediction using Machine Learning Techniques.
+                </h6></a>
+              </div>
+            </div>
+            <div class="d-flex list-group-item gap-2 w-100 justify-content-between">
+              <div>
+                <h6 class="mb-2"><a href="https://www.ijert.org/research/heart-disease-prediction-using-machine-learning-techniques-IJERTV9IS110259.pdf" target="_blank">Heart disease prediction using machine learning algorithms.
+                </h6></a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /////////////////////////////////////////
+        END OF Refrences
+  ////////////////////////////////////////// -->
+
+  <!-- ////////////////////////////////////////
+          FOOTER
+  /////////////////////////////////////// -->
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-body-secondary">© 2023</p>
+    
+        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+    
+        <ul class="nav col-md-4 justify-content-end">
+          <li class="nav-item"><a href="#Agenda" class="nav-link px-2 text-body-secondary">Features</a></li>
+          <li class="nav-item"><a href="#aboutUS" class="nav-link px-2 text-body-secondary">About us</a></li>
+          <li class="nav-item"><a href="#quickFacts" class="nav-link px-2 text-body-secondary">Quick Facts</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contact us</a></li>
+        </ul>
+      </footer>
+    </div>
+
+  <!-- ////////////////////////////////////////
+          END OF FOOTER
+  /////////////////////////////////////// -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous">
+  </script>
+
+  <script src="{{url_for('static', filename='result.js')}}"> </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  
+</body>
+</html>

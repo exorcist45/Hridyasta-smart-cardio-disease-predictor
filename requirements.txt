@@ -1,0 +1,6 @@
+Flask
+werkzeug==0.16.1
+scikit-learn
+joblib
+skilearn
+pandas

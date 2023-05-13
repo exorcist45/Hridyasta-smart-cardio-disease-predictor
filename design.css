@@ -1,0 +1,135 @@
+.ourHeroLogo,.rounded-circle{
+  border-radius: 100%;
+  height: 150px;
+  width: 150px;
+}
+
+.custom-color{
+  color: black;
+}
+
+#gForm{
+  display: none;
+}
+
+.hero-background {
+  /* background: #16ac05b3; */
+  padding-bottom: 40px;
+  background: linear-gradient(#16ac05b3 , #A0D8B3);
+}
+
+.text{
+  /* color: #C23C13; */
+  font-weight: 600;
+}
+
+.membName{
+  font-weight: 600;
+}
+
+.coloAbtHealth{
+  background: linear-gradient(#A0D8B3 , #fff8de1d);
+  
+}
+
+.members{
+  background: #7DA87B;
+  border-radius: 10%;
+  color: azure;
+}
+
+.aboutUs {
+  
+}
+
+#Agenda{
+  height: 650px;
+}
+.aboutUs{
+  height: 550px;
+  /* background-color: #7C9070; */
+  padding-top: 10px;
+}
+
+/* iframe{
+  width: 640;
+  height: 3306;
+  height: 6;
+} */
+
+.chooseUs2{
+  background-color: azure;
+  /* gap: 5px; */
+  border-radius: 5%;
+}
+
+.div-gap > div{
+  border-left: 2px solid #A0D8B3;
+}
+
+/* iframe[src*="google.com"] .freebirdFormviewerViewFooterDisclaimerContainer {
+  display: none !important;
+} */
+
+
+
+
+/* social */
+.socials {
+  position: relative;
+  margin-top: 9rem;
+}
+
+li{
+  list-style-type: none;
+}
+
+.socials .social-icons {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.socials .social-icons li {
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+
+.social-icons a {
+  font-size: 2rem;
+  display: inline-block;
+  line-height: 44px;
+  color: #00d9ff;
+  background-color: #09011b;
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  justify-content: center;
+  /* align-items: baseline; */
+  margin-bottom: 8px;
+  border-radius: 100%;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.social-icons a:active,
+.social-icons a:focus,
+.social-icons a:hover {
+  color: #fff;
+  background-color: #0685da;
+}
+.social-icons a.github:hover {
+  background-color: #0e0e0e;
+}
+.social-icons a.twitter:hover {
+  background-color: #00aced;
+}
+.social-icons a.linkedin:hover {
+  background-color: #007bb6;
+}
+.social-icons a.dev:hover {
+  background-color: #070707;
+}
+.social-icons a.instagram:hover {
+  background-color: #ee00da;
+}
